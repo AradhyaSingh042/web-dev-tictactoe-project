@@ -26,12 +26,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  height: 70%;
+  width: 24rem;
+  height: 32rem;
+  /* 25% and 70% */
   padding: 0.8rem 0px;
-  /* display: none; */
   position: relative;
-  /* background-color: salmon; */
   /* filter: brightness(0.45); */
 }
 
@@ -317,37 +316,4 @@ body {
   font-weight: 700;
   letter-spacing: 0.1rem;
   cursor: pointer;
-}
-
-@media only screen and (max-width: 768px) {
-  .game-card {
-    width: 80%;
-    height: 80%;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .game-card {
-    width: 90%;
-    height: 90%;
-  }
-  .game-body {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-  }
-  .game-cell {
-    width: 4rem;
-    height: 4rem;
-    font-size: 2rem;
-  }
-  .game-footer {
-    flex-direction: column;
-  }
-  .restart-container {
-    margin-top: 1rem;
-  }
-  .quit-next-container {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
 }
