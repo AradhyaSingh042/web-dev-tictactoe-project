@@ -66,8 +66,13 @@ function resetGame() {
     gameCell.innerHTML = "";
     gameCell.style.backgroundColor = "#1F3540";
     gameCell.style.pointerEvents = "auto";
-    currentIcon = xIcon;
   });
+  currentIcon = xIcon;
+  if (turnIcon.className == "fa-solid fa-o") {
+    turnIcon.className = "fa-solid fa-x";
+  } else if (turnIcon.className == "fa-solid fa-x") {
+    turnIcon.className = "fa-solid fa-o";
+  }
 }
 
 function verifyWinCondition(index0, index1, index2) {
