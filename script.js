@@ -37,10 +37,8 @@ gameCells.forEach((gameCell) => {
 });
 
 function checkRes() {
-  if (checkTie() == true) {
+  if (checkTie()) {
     return;
-  } else {
-    checkTie();
   }
   verifyWinCondition(0, 1, 2);
   verifyWinCondition(3, 4, 5);
@@ -69,7 +67,7 @@ function resetGame() {
     gameCell.style.backgroundColor = "#1F3540";
     gameCell.style.pointerEvents = "auto";
     currentIcon = xIcon;
-  }, 1000);
+  });
 }
 
 function verifyWinCondition(index0, index1, index2) {
@@ -84,9 +82,11 @@ function verifyWinCondition(index0, index1, index2) {
       });
       document.querySelector(".win-screen").style.display = "flex";
       document.querySelector(".game-card").style.filter = "brightness(0.45)";
-      if (gameCells[index0].state == "X") {
+      if (gameCells[index0].state == cellState[1]) {
         winIcon.className = "fa-solid fa-x";
-      } else if (gameCells[index0].state == "O") {
+        winIcon.style.color = "#31c4be";
+        document.querySelector(".take-the-round-text").style.color = "#31c4be";
+      } else if (gameCells[index0].state == cellState[2]) {
         winIcon.className = "fa-solid fa-o";
         winIcon.style.color = "#f2b237";
         document.querySelector(".take-the-round-text").style.color = "#f2b237";
