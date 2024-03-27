@@ -1,4 +1,3 @@
-// Tic-Tac-Toe Logic
 let xIcon = `<i class="fa-solid fa-x" id="cell-icon-x"</i>`;
 let oIcon = `<i class="fa-solid fa-o" id="cell-icon-o"</i>`;
 let gameCells = document.querySelectorAll(".game-cell");
@@ -16,6 +15,9 @@ let tiesScore = 0;
 gameCells.forEach((gameCell) => {
   gameCell.state = cellState[0];
   gameCell.addEventListener("click", (details) => {
+    if (gameCell.state != cellState[0]) {
+      return;
+    }
     gameCell.innerHTML = currentIcon;
     gameCell.style.backgroundColor = "#142128";
     if (currentIcon == xIcon) {
@@ -65,6 +67,7 @@ function resetGame() {
     gameCell.state = cellState[0];
     gameCell.innerHTML = "";
     gameCell.style.backgroundColor = "#1F3540";
+    gameCell.style.pointerEvents = "auto";
     currentIcon = xIcon;
   }, 1000);
 }
@@ -75,17 +78,21 @@ function verifyWinCondition(index0, index1, index2) {
     gameCells[index0].state == gameCells[index1].state &&
     gameCells[index1].state == gameCells[index2].state
   ) {
-    // winCheck
-    document.querySelector(".win-screen").style.display = "flex";
-    document.querySelector(".game-card").style.filter = "brightness(0.45)";
-    if (gameCells[index0].state == "X") {
-      winIcon.className = "fa-solid fa-x";
-    } else if (gameCells[index0].state == "O") {
-      winIcon.className = "fa-solid fa-o";
-      winIcon.style.color = "#f2b237";
-      document.querySelector(".take-the-round-text").style.color = "#f2b237";
-    }
-    updateScoreBoard(index0);
+    setTimeout(() => {
+      gameCells.forEach((gameCell) => {
+        gameCell.style.pointerEvents = "none";
+      });
+      document.querySelector(".win-screen").style.display = "flex";
+      document.querySelector(".game-card").style.filter = "brightness(0.45)";
+      if (gameCells[index0].state == "X") {
+        winIcon.className = "fa-solid fa-x";
+      } else if (gameCells[index0].state == "O") {
+        winIcon.className = "fa-solid fa-o";
+        winIcon.style.color = "#f2b237";
+        document.querySelector(".take-the-round-text").style.color = "#f2b237";
+      }
+      updateScoreBoard(index0);
+    }, 750);
   }
 }
 

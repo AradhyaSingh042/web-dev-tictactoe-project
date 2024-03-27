@@ -31,7 +31,6 @@ body {
   /* 25% and 70% */
   padding: 0.8rem 0px;
   position: relative;
-  /* filter: brightness(0.45); */
 }
 
 .game-header {
@@ -118,7 +117,6 @@ body {
   justify-items: center;
   padding: 0px 0.8rem;
   row-gap: 1.3rem;
-  /* background-color: salmon; */
 }
 
 .game-cell {
